@@ -1,10 +1,11 @@
 SRCS	= main.c print.c
 OBJS	= ${SRCS:.c=.o}
-CC		= gcc -Wall -Wextra -Werror
+CC		= gcc
+CFLAGS += -Wall -Wextra -Werror
 NAME	= minipow
 
 all:		$(OBJS)
-	gcc $(OBJS) -o $(NAME) -l:libssl.a -lcrypto
+	gcc $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS) -lssl -lcrypto
 
 fclean:		clean
 	rm -f $(NAME)
